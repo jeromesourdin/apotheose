@@ -1,0 +1,14 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="page-header">
+            <h1>{{ title|default('My project')|trans }}</h1>
+        </div>
+        <p class="lead">
+            {% block fos_user_content %}
+            {% endblock %}
+        </p>
+        </div>
+    </div>
+{% endblock %}

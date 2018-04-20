@@ -1,0 +1,15 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+<div class="container">
+    <div class="page-header">
+        <h1>{{ auteur.prenom }} {{ auteur.nom }} <small>en quelques mots</small></h1>
+    </div>
+    <p class="lead">
+        <strong>{{ auteur.prenom }} {{ auteur.nom }}</strong> est né le
+        {{ auteur.naissance|date('d/m/Y') }} à {{ auteur.lieu }}.<br />
+        <strong>{{ auteur.livres[0].titre }}</strong> fait partie de ses nombreuses oeuvres.<br /><br />
+        <a href="{{ path('eni_demo_default_index') }}"><< Retour à la liste des livres</a>
+    </p>
+</div>
+{% endblock %}

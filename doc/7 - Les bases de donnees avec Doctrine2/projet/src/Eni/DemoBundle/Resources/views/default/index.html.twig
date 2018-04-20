@@ -1,0 +1,27 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+<div class="container">
+    
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Titre</th>
+            <th>Année de parution</th>
+            <th>Auteur</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for livre in livres %}
+        <tr>
+            <td>{{ livre.id }}</td>
+            <td>{{ livre.titre }}</a></td>
+            <td>{{ livre.dateParution|date('Y') }}</td>
+            <td><a href="{{ path('eni_demo_voir_auteur', {slug: livre.auteur.slug}) }}">{{ livre.auteur }}</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+{% endblock %}

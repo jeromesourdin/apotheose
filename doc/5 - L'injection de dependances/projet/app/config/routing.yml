@@ -1,0 +1,3 @@
+app:
+    resource: '@EniDemoBundle/Controller/'
+    type: annotation

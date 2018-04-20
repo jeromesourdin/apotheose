@@ -1,0 +1,10 @@
+eni_demo:
+    default:
+        index:
+            welcome: Bienvenue sur mon projet!
+            message:
+                anonymous: >
+                    Mon projet utilise FOSUserBundle pour gérer ses utilisateurs.
+                    Il comporte un système d'authentification et de modification
+                    d'informations de profil. Vous pouvez même le lire en anglais!
+                authenticated: Bonjour %name%, ravi de vous revoir sur mon projet.

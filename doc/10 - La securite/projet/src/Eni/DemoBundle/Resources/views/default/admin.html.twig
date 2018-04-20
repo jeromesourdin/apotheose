@@ -1,0 +1,12 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+<div class="starter-template">
+    <h1>Section sécurisée</h1>
+    <p class="lead">
+        Vous êtes authentifié en tant qu'utilisateur ayant le rôle <strong>ROLE_ADMIN</strong>,
+        vous êtes donc autorisé à lire cette page.<br />
+        <a href="{{ path('logout') }}">Cliquez ici</a> pour vous déconnecter.
+    </p>
+</div>
+{% endblock %}

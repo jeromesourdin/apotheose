@@ -1,0 +1,13 @@
+version: '3.2'
+
+services:
+
+  app:
+    image: bamarni/php:7-cli
+    volumes:
+      - ./:/app
+    working_dir: /app
+    command: php ./bin/console server:run 0.0.0.0:8000
+    ports:
+      - 8000:8000
+    restart: always

@@ -1,0 +1,28 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+<div class="starter-template">
+    {% if connected %}
+        <div class="alert alert-success">Les informations de connexion à la base de
+            données sont valides. Le service <strong>my_pdo</strong> est prêt à
+            être utilisé!
+        </div>
+        <h1>Félicitations!</h1>
+    {% else %}
+        <div class="alert alert-warning">Les informations de connexion à la base de
+            données sont invalides (ou non renseignées). Le service <strong>my_pdo</strong>
+            ne peut être utilisé.
+        </div>
+        {% if message %}<div class="alert alert-danger">{{ message }}</div>{% endif %}
+        
+        <h1>Exercice</h1>
+        <p class="lead">
+            Ce projet reprend la section <strong>"Les extensions de bundle"</strong>
+            du chapitre sur <strong>l'Injection de Dépendances</strong>. Nous y avions
+            expliqué comment définir vos propres directives de configuration pour vos bundles.
+            Serez-vous capable de configurer EniDemoBundle de manière à établir une connexion
+            vers une base de données au travers du service <strong>my_pdo</strong>?
+        </p>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Mon projet{% endblock %}</title>
+    <link href="{{ asset('libs/bootstrap/css/bootstrap.css') }}" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 50px;
+            padding-bottom: 20px;
+        }
+        
+        a.flag {
+            display: block;
+            float: left;
+        }
+        
+        img.flag {
+            display: block;
+            float: left;
+            margin: 20px 0 0 5px;
+            width: 16px;
+            height: 11px;
+            background: url("{{ asset('bundles/enidemo/images/flags.png') }}") no-repeat;
+        }
+        
+        .flag.flag-fr { background-position: -16px 0; }
+        .flag.flag-en { background-position: 0 -11px; }
+    </style>
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="{{ path('eni_demo_default_index') }}">{{ 'My project'|trans }}</a>
+          <a href="{{ path("eni_demo_default_index", {"_locale": "en"}) }}" class="flag"><img src="{{ asset('bundles/enidemo/images/blank.gif') }}" class="flag flag-en" /></a>
+          <a href="{{ path("eni_demo_default_index", {"_locale": "fr"}) }}" class="flag"><img src="{{ asset('bundles/enidemo/images/blank.gif') }}" class="flag flag-fr" /></a>
+        </div>
+        <div class="navbar-collapse collapse">
+          {% if is_granted('ROLE_USER') %}
+            <div class="navbar-right">
+            <p class="navbar-text">{{ 'Hello'|trans }} {{ app.user.username }}!</p>
+            <a href="{{ path('fos_user_security_logout') }}" class="btn btn-danger navbar-btn">{{ 'Logout'|trans }}</a>
+            </div>
+          {% else %}
+          <form class="navbar-form navbar-right" role="form" action="{{ path('fos_user_security_check') }}" method="post">
+            <div class="form-group">
+              <input name="_username" type="text" placeholder="{% trans from "FOSUserBundle" %}security.login.username{% endtrans %}" class="form-control">
+            </div>
+            <div class="form-group">
+              <input name="_password" type="password" placeholder="{% trans from "FOSUserBundle" %}security.login.password{% endtrans %}" class="form-control">
+            </div>
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}" />
+            <button type="submit" class="btn btn-success">{% trans from "FOSUserBundle" %}security.login.submit{% endtrans %}</button>
+          </form>
+          {% endif %}
+        </div><!--/.navbar-collapse -->
+      </div>
+    </div>
+
+    {% block body %}
+    {% endblock %}
+    
+    {% block javascripts %}
+        <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+        <script src="{{ asset('libs/bootstrap/js/bootstrap.min.js') }}"></script>
+    {% endblock %}
+  </body>
+</html>
